@@ -65,14 +65,8 @@ function checkWinner() {
 			}
 				//console.log(toWin);
 				if (toWin == 3) 
-					return true;
-
-
-					
+					return true;	
 				}
-			
-
-			
 				
 			}
 			if (toWin !=3)
@@ -84,7 +78,7 @@ function checkWinner() {
 
 
  replaceSpot(1);
- replaceSpot(2);
- replaceSpot(3);
- //console.log(game.board);
+ replaceSpot(5);
+ replaceSpot(9);
+ console.log(game.board);
 console.log(checkWinner());

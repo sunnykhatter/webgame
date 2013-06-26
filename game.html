@@ -1,22 +1,147 @@
-<doctype html>
-
-
+<!DOCTYPE html>
 <html>
-	<script type="text/javascript" src="game.js" ></script>
+<head>
 
-	<title> This is the title</title>
-	<header> TicTacToe</header>
+	<title>Tic Tac Toe</title>
+</head>
+<body>
+	<link href='http://fonts.googleapis.com/css?family=Londrina+Outline' rel='stylesheet' type='text/css'>
 
-	<body>
+	<link rel="stylesheet" href= "stylesheet.css">
+	
+	
+
+
+</link>
+
+<div class = "title">Tic Tac Toe</div>
+
+<table class = "table">
+ <tr></tr>
+ 	<td class = "box", id = "1">1</td>
+ 	<td class = "box", id = "2">2</td>
+ 	<td class = "box", id = "3">3</td>
+<tr></tr>
+ 	<td class = "box", id = "4">4</td>
+ 	<td class = "box", id = "5">5</td>
+ 	<td class = "box", id = "6">6</td>
+<tr></tr>
+	<td class = "box", id = "7">7</td>
+	<td class = "box", id = "8">8</td>
+	<td class = "box", id = "9">9</td>
+</table>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+<script type="text/javascript" href= "tictactoe.js"></script>
+<script>
+var board = {1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8};
+
+var wincases = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
+var player1 = "X";
+var player2 = "O";
+	var moveCounter = 0;
+
+
+function ifPlayer1Won() {
+
+	for (var i = 0; i<wincases.length; i++) {
+		var toWin= 0;
+		
+		for (var j = 0; j<wincases[i].length; j++) {
+			//console.log(game.spots.charAt(wincases[i][j]))
+			
+			//console.log(game.spots.charAt(wincases[i][j]-1))
 
 		
+			if (board[wincases[i][j]-1] == player1) {
+				
+				toWin++
+				//console.log(toWin + " this is from inside the if statement");
+				//console.log(toWin);
 
-	</body>
+				if (toWin ==3) {
+					$(".title").text("Player One Wins!");
+					moveCounter=9;
+						}
+}
+
+}
+}
+
+}
+
+
+function ifPlayer2Won() {
+
+	for (var i = 0; i<wincases.length; i++) {
+		var toWin= 0;
+		
+		for (var j = 0; j<wincases[i].length; j++) {
+			//console.log(game.spots.charAt(wincases[i][j]))
+			
+			//console.log(game.spots.charAt(wincases[i][j]-1))
+
+		
+			if (board[wincases[i][j]-1] == player2) {
+				
+				toWin++
+				//console.log(toWin + " this is from inside the if statement");
+			
+			
+				//console.log(toWin);
+				if (toWin == 3) {
+				$(".title").text("Player Two Wins!");
+					moveCounter=9;
+					}
+				}
+				
+				
+	}
+}
+
+}
 
 
 
 
+$(document).ready( function(){
+		
+
+	$(".box").on("click", function () { 
+		var selection = $(this).attr('id');
+		if (moveCounter < 9) {
+			
+			
+			console.log(moveCounter);
+				// if movecounter is even it's player1's turn
+				if (moveCounter % 2 == 0) {
+					moveCounter++;
+					$(this).text(player1);
+					board[selection-1] = player1;
+					ifPlayer1Won();
+					
+
+				} else {
+				// if movecounter is odd it player2's turn
+					moveCounter++;
+					$(this).text(player2);
+					board[selection-1] = player2;
+					ifPlayer2Won();
+				}
+		}
+
+
+	});
+	
 
 
 
-</htmtl>
+});
+
+</script>
+
+</body>
+</html>
+
